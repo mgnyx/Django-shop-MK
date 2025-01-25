@@ -19,11 +19,17 @@ services:
       dockerfile: ./dockerfiles/dev/django/Dockerfile
     volumes:
       - ./core:/usr/src/app
-    working-dir: /usr/src/app
-    command: django-admin startproject core .
+    working_dir: /usr/src/app
+    command: >
+      sh -c "
+      if [ ! -f /usr/src/app/manage.py ]; then
+        django-admin startproject core .;
+      fi &&
+      python manage.py runserver 0.0.0.0:8000
+      "
     environment:
       - DEBUG=True
-   # restart: always
+    restart: always
     depends_on:
       - db
 
