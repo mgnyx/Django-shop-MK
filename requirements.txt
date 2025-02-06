@@ -1,6 +1,9 @@
 # main modules
-django >4.2,<4.3
-
+Django==4.2.18
 # db modules
-
-psycopg[binary]
+asgiref==3.8.1
+psycopg==3.2.4
+psycopg-binary==3.2.4
+python-decouple==3.8
+sqlparse==0.5.3
+typing_extensions==4.12.2
